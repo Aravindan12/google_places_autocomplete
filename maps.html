@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX6aGjOeMptlBNc0WF3vh/m0SPMl1vNBE&callback=myMap"></script> -->
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX6aGjOeMptlBNc0WF3vhm0SPMl1vNBE&libraries=places&callback=initMap">
+</script>
+</head>
+<body>
+    <label for="locationTextField">Location</label>
+    <input id="locationTextField" type="text" size="50">
+    <div id="map"></div>
+    <script>
+        // function init() {
+        //     var input = document.getElementById('locationTextField');
+        //     var autocomplete = new google.maps.places.Autocomplete(input);
+        // }
+
+        // google.maps.event.addDomListener(window, 'load', init);
+
+        function initMap() {
+            const input = document.getElementById("locationTextField");
+            const autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+                console.dir(place);
+            });
+        }
+        function myMap() {
+var mapProp= {
+center:new google.maps.LatLng(),
+zoom:5,
+};
+var map = new google.maps.Map(document.getElementById("map"),mapProp);
+var marker = new google.maps.Marker({position: myCenter});
+
+marker.setMap(map);
+}
+    </script>
+</body>
+</html>
